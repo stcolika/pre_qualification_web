@@ -19,6 +19,12 @@ Visual Studio Enterprise 2019 (sugestão)
 # Acesse a pasta do projeto
 $ File -> Open -> Project/Solution -> pre_qualification_web.sln 
 
+# Alterar localização do arquivo 
+$ Pasta Controllers -> ToDoController.cs 
+
+# Altere as strings com o caminho para o local correspondente à maquina em uso
+$ string fileName = @"C:\\Seu_caminho\pre_qualification_web\\database\\database.txt";
+
 # No menu lateral direito (Solution Explorer)
 $ Clique com botão direito no projeto pre_qualification_web e escolha "Build"
 
