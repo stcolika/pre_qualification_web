@@ -1,0 +1,51 @@
+﻿<!--
+    Author: Fernanda dos Santos Colika
+    Date: 15/08/2020
+
+    *Given a string, check if it looks like a CNPJ*
+-->
+
+@section scripts{
+    <script>
+        function validateButton(cnpj) {
+            rulenumber = /^[0-9]+$/;
+            ruleChar = "";
+            aux = true;
+            document.getElementById("statusChar").innerHTML = "";
+            document.getElementById("statusNum").innerHTML = "";
+
+            if (cnpj.length > 14) {
+                document.getElementById("statusChar").innerHTML = "Many characters";
+            }
+            if (cnpj.length < 14) {
+                document.getElementById("statusChar").innerHTML = "Few characters";
+            }
+
+            if (!cnpj.match(rulenumber)) aux = false;
+            if (aux == true && cnpj.length == 14) document.getElementById("statusNum").innerHTML = "Only numbers - 14 characters"; //1. Looks like Number
+
+            if (!cnpj.match(ruleChar)) aux = false;
+            if (aux) document.getElementById("statusForm").innerHTML = "Format Ok"; //1. Looks like CNPJ
+
+        }
+    </script>
+}
+
+<div id="body">
+    <br />
+    <div class="row">
+        <div class="form-group">
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="cnpj" id="cnpj" placeholder="Write a value">
+            </div>
+            <div class="col-sm-3">
+                <button type="button" class="btn btn-primary btn-md" onclick="validateButton(cnpj.value)">Validate</button>
+            </div>
+            <div class="col-sm-6">
+                <label id="statusNum"></label><br />
+                <label id="statusChar"></label><br />
+                <label id="statusForm"></label>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿<!--
+    Author: Fernanda dos Santos Colika
+    Date: 15/08/2020
+
+    *Application that queries a server and displays the current date/time hour in local and UTC timezones.
+        Server URL: http://worldclockapi.com/api/json/utc/now*
+    
+    *REST server returning a JSON*
+-->
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $.getJSON('/api/Time', function (dataJSON) {
+                $(dataJSON).each(function (i, item) {
+                    $('#client').append('<li>' + item.currentDateTime + '</li>');
+                    $('#client').append('<li>' + item.timeZoneName + '</li>');
+                });
+            });
+
+            $.post('/api/Time', function (dataJSON) {
+                $(dataJSON).each(function (i, item) {
+                    $('#json').append('<li>' + item + '</li>');
+                });
+            }, 'json');
+        });
+    </script>
+
+}
+
+<div id="body">
+    <br />
+    <br />
+    <!--JSON-->
+    <div class="row">
+        <div class="form-group">
+            <div class="col-sm-3"><label>Get Date/Time and Timezone from a LINK</label><ul id="client"></ul></div>
+            <div class="col-sm-3"><label>Make a string with data of user </label><ul id="json"></ul></div>
+            <div class="col-sm-6"></div>
+        </div>
+    </div>
+
+</div>
+
+

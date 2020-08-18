@@ -1,0 +1,54 @@
+﻿<!--
+    Author: Fernanda dos Santos Colika
+    Date: 15/08/2020
+
+    *Todo list application that permits the creation and deletion of tasks (texts).*
+    *The application must persist the tasks between executions, using FILE.*
+        
+-->
+
+@model string[]
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div id="body">
+        <br />
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" name="act" id="act" placeholder="Write an Activity">
+                </div>
+                <div class="col-sm-3">
+                    <button type="submit" class="btn btn-primary btn-md" id="Insert" name="Insert">Insert</button>
+                </div>
+                <div class="col-sm-3"><label id="Status"></label></div>
+            </div>
+
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Activity</th>
+                    <th scope="col">Remove</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (var i = 0; i < Model.Length; i++)
+                {
+                    <tr>
+                        <th scope="row">@i</th>
+                        <td>@Html.DisplayFor(modelItem => Model[i])</td>
+                        <td>
+                            @Html.ActionLink("Remove", "RemoveActivity", new { numLine = i })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
